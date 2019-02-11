@@ -4,7 +4,7 @@ defmodule Timewrap do
   time-sources, Elixir and Erlang offers you. Other than that you 
   can implement on your own.
 
-  Also, _Timewrap_ can do the time-wrap, freeze, and unfreeze a 
+  Also, _Timewrap_ can do the time-warp, freeze, and unfreeze a 
   `Timewrap.Timer`.
 
   You can instantiate different `Timewrap.Timer`s, registered and
@@ -14,6 +14,17 @@ defmodule Timewrap do
   and implicitly starts the default timer `:default_timer`. This
   one is used whenever you call Timewrap-functions without a 
   timer given as the first argument.
+
+  ### Configuration
+
+  `config/config.exs`
+
+      config :timewrap,
+        timer: :default,
+        unit: :second,
+        calendar: Calendar.ISO,
+        representation: :unix
+
 
   ### Examples:
 

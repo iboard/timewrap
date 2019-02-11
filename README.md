@@ -4,7 +4,7 @@ Timewrap is a "Time-Wrapper" through which you can access different
 time-sources, Elixir and Erlang offers you. Other than that you 
 can implement on your own.
 
-Also, _Timewrap_ can do the time-wrap, freeze, and unfreeze a 
+Also, _Timewrap_ can do the time-warp, freeze, and unfreeze a 
 `Timewrap.Timer`.
 
 You can instantiate different `Timewrap.Timer`s, registered and
@@ -49,7 +49,7 @@ timer given as the first argument.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
+From [available Hex package](https://hex.pm/docs/publish), the package can be installed
 by adding `timewrap` to your list of dependencies in `mix.exs`:
 
 ```elixir
@@ -59,6 +59,16 @@ def deps do
   ]
 end
 ```
+  
+### Configuration
+
+  `config/config.exs`
+
+      config :timewrap,
+        timer: :default,
+        unit: :second,
+        calendar: Calendar.ISO,
+        representation: :unix
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can

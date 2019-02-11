@@ -8,6 +8,8 @@ defmodule Timewrap.MixProject do
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
+      description: description(),
+      package: package(),
       # The main page in the docs
       docs: [
         main: "readme",
@@ -22,6 +24,26 @@ defmodule Timewrap.MixProject do
     [
       extra_applications: [:logger],
       mod: {Timewrap.Application, []}
+    ]
+  end
+
+  def description,
+    do: ~S"""
+    **Timewrap** is a simple _wrapper_ you can use to access
+    time. Other than that, you can freeze and unfreeze different
+    timers. Very handy in tests.
+    """
+
+  def package() do
+    [
+      name: "timewrap",
+      files: ["lib", "mix.exs", "README*", "LICENSE*", "CHANGELOG*"],
+      maintainers: ["andreas@altendorfer.at"],
+      licenses: ["MIT"],
+      links: %{
+        "GitHub" => "https://github.com/iboard/timewrap",
+        "Documentation" => "https://hexdocs.pm/timewrap/readme.html"
+      }
     ]
   end
 
