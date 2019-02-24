@@ -2,8 +2,6 @@ defmodule Timewrap.Timer do
   require Logger
   use Agent
 
-  alias __MODULE__
-
   def start_link(opts) do
     module =
       case Keyword.fetch(opts, :name) do
