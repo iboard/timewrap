@@ -17,6 +17,10 @@ timer given as the first argument.
 
 ### Examples:
 
+The best way to figure out how you can use this library is by having a look at 
+this [Test suite](https://github.com/iboard/hexpack-examples/blob/master/test/hexpack_examples_test.exs).
+
+
     use Timewrap # imports some handy Timewrap-functions.
 
 #### With default Timer
@@ -55,7 +59,7 @@ by adding `timewrap` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:timewrap, "~> 0.1.0"}
+    {:timewrap, "~> 0.1.3"}
   ]
 end
 ```
