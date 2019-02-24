@@ -66,12 +66,15 @@ defmodule Timewrap do
       import Timewrap,
         only: [
           current_time: 0,
+          current_time: 1,
           freeze_time: 0,
           freeze_time: 1,
+          freeze_time: 2,
           unfreeze_time: 0,
           unfreeze_time: 1,
           new_timer: 1,
-          release_timer: 1
+          release_timer: 1,
+          with_frozen_time: 2
         ]
     end
   end
@@ -173,19 +176,30 @@ defmodule Timewrap do
   ### Example
 
        iex> use Timewrap
-       iex> "1964-08-31 06:00:00+0100" 
+       iex> "1964-08-31 06:00:00" 
        iex> |> Timewrap.with_frozen_time(fn() ->
        iex>   assert current_time() == -168372000
        iex> end) 
        true
   """
-  def with_frozen_time(time, fun) do
-    {:ok, dt, offset} = DateTime.from_iso8601(time)
+  def with_frozen_time(time, fun)
 
-    freeze_time(:default_timer, DateTime.to_unix(dt) + offset)
-    rc = fun.()
-    unfreeze_time(:default_timer)
-    rc
+  def with_frozen_time(time, fun) when is_binary(time) do
+    if String.ends_with?(time,"Z") do
+      {:ok, dt, offset} = DateTime.from_iso8601(time)
+
+      freeze_time(:default_timer, DateTime.to_unix(dt) + offset)
+      rc = fun.()
+      unfreeze_time(:default_timer)
+      rc
+    else
+      with_frozen_time(time <> "Z", fun)
+    end
+  end
+
+  def with_frozen_time(%NaiveDateTime{} = ndt, fun) do
+    NaiveDateTime.to_iso8601(ndt)
+    |> with_frozen_time(fun)
   end
 
   defp freeze(timer, time), do: Timewrap.Timer.freeze(timer, time)

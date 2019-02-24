@@ -59,7 +59,7 @@ def deps do
   ]
 end
 ```
-  
+ 
 ### Configuration
 
   `config/config.exs`
@@ -69,6 +69,25 @@ end
         unit: :second,
         calendar: Calendar.ISO,
         representation: :unix
+
+
+  `lib/your_app/application.ex`
+
+      use Application
+
+      @impl true
+      def start(_type, _args) do
+        # List all child processes to be supervised
+        children = [
+          # Starts a worker by calling: Timewrap.Worker.start_link(arg)
+          {Timewrap.TimeSupervisor, strategy: :one_for_one, name: Timewrap.TimeSupervisor} #<---ADD THIS
+        ]
+
+        # See https://hexdocs.pm/elixir/Supervisor.html
+        # for other strategies and supported options
+        opts = [strategy: :one_for_one, name: Timewrap.Supervisor]
+        Supervisor.start_link(children, opts)
+      end
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
