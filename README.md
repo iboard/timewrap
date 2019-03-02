@@ -61,7 +61,7 @@ by adding `timewrap` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:timewrap, "~> 0.1.3"}
+    {:timewrap, "~> 0.1"}
   ]
 end
 ```
