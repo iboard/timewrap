@@ -1,5 +1,6 @@
 # Timewrap
 [![Documentation](https://img.shields.io/badge/docs-hexpm-blue.svg)](http://hexdocs.pm/timewrap/)
+[![Documentation](https://travis-ci.com/iboard/timewrap.svg?branch=master)](https://travis-ci.com/iboard/timewrap)
 
 Timewrap is a "Time-Wrapper" through which you can access different
 time-sources, Elixir and Erlang offers you. Other than that you 
