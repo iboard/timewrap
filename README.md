@@ -1,4 +1,5 @@
 # Timewrap
+[![Documentation](https://img.shields.io/badge/docs-hexpm-blue.svg)](http://hexdocs.pm/timewrap/)
 
 Timewrap is a "Time-Wrapper" through which you can access different
 time-sources, Elixir and Erlang offers you. Other than that you 
